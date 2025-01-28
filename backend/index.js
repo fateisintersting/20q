@@ -4,6 +4,7 @@ const saveQuestion = require('./src/routes/saveQuestion');
 const getQuestion = require('./src/routes/getQuestion');
 const getchallenge = require('./src/routes/getChallange');
 const chatRouter = require('./src/routes/chat');
+
 require('dotenv').config();
 
 
@@ -13,9 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-
-// Routes
 
 app.use('/api', saveQuestion);
 app.use('/api',getQuestion);
