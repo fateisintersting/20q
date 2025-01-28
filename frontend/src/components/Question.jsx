@@ -18,7 +18,7 @@ export default function Question() {
     setIsButtonDisabled(true); // Disable button immediately after it's clicked
 
     axios
-      .post("http://localhost:5000/api/question", data)
+      .post("https://20q-wxcj.vercel.app/api/question", data)
       .then((response) => {
         setMessage(response.data.message);
         alert("Question created successfully!"); // Display success alert

@@ -9,7 +9,7 @@ export default function Challange() {
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/get-challange"); // Backend endpoint
+        const response = await axios.get("https://20q-wxcj.vercel.app/api/get-challange"); // Backend endpoint
         if (response.data.success) {
           setChallenges(response.data.data); // Set the challenges to state
         } else {

@@ -15,7 +15,7 @@ export default function Solve() {
   useEffect(() => {
     // Fetch challenge details by ID
     axios
-      .get(`http://localhost:5000/api/get-challenge/${id}`)
+      .get(`https://20q-wxcj.vercel.app/api/get-challenge/${id}`)
       .then((response) => {
         setChallenge(response.data);
         setGuessWord(response.data.guessword); // Set the correct guess word
@@ -46,7 +46,7 @@ export default function Solve() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/chat", {
+      const response = await axios.post("https://20q-wxcj.vercel.app/api/chat", {
         messages: updatedMessages,
       });
 
