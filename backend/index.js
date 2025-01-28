@@ -5,8 +5,6 @@ const getQuestion = require('./src/routes/getQuestion');
 const getchallenge = require('./src/routes/getChallange');
 const chatRouter = require('./src/routes/chat');
 
-require('dotenv').config();
-
 
 const app = express();
 
