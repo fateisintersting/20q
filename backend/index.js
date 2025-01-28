@@ -14,7 +14,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+app.get('/',(req,res)=>{
+    res.send("hello world");
+})
 app.use('/api', saveQuestion);
 app.use('/api',getQuestion);
 app.use('/api',getchallenge);
