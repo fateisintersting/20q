@@ -1,8 +1,11 @@
 const express = require("express");
 const OpenAI = require("openai");
+require('dotenv').config();
 
 const chatRouter = express.Router();
 
+
+const OPENAI_API_KEY =process.env.OPENAI_API_KEY;
 const client = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });

@@ -19,12 +19,7 @@ export default function NavBar() {
             >
               Home
             </Link>
-            <Link
-              to="/dasboard"
-              className="hover:bg-blue-700 px-3 py-2 rounded-md transition"
-            >
-              Dasboard
-            </Link>
+            
             
           </div>
 

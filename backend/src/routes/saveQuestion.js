@@ -1,5 +1,6 @@
 const express = require('express');
-const { QuestionModal } = require('../models/Question');
+const { collection, addDoc } = require('firebase/firestore');
+const db = require('../models/Firebase'); // Import the Firestore instance
 
 const saveQuestion = express.Router();
 
@@ -11,12 +12,20 @@ saveQuestion.post('/question', async (req, res) => {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        const newData = new QuestionModal({ guessword, category, context });
-        const savedData = await newData.save();
-        console.log('Data saved successfully');
-        res.status(201).json({ message: 'Data saved successfully', data: savedData });
+        // Add data to Firestore
+        const newQuestion = {
+            guessword,
+            category,
+            context,
+            createdAt: new Date().toISOString(),
+        };
+
+        const docRef = await addDoc(collection(db, 'questions'), newQuestion); // 'questions' is the Firestore collection name
+
+        console.log('Document written with ID:', docRef.id);
+        res.status(201).json({ message: 'Data saved successfully', id: docRef.id, data: newQuestion });
     } catch (error) {
-        console.error('Error saving data:', error);
+        console.error('Error adding document:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });

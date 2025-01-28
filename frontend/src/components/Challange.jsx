@@ -1,18 +1,26 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Challange() {
   const [challenges, setChallenges] = useState([]);
 
-  // Fetch data on component mount
+  // Fetch data from the backend API
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/get-challange")
-      .then((response) => {
-        setChallenges(response.data.data); // Access the `data` array from API response
-      })
-      .catch((err) => console.error(err));
+    const fetchChallenges = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/get-challange"); // Backend endpoint
+        if (response.data.success) {
+          setChallenges(response.data.data); // Set the challenges to state
+        } else {
+          console.error("Failed to fetch challenges:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching challenges:", error);
+      }
+    };
+
+    fetchChallenges();
   }, []);
 
   return (
@@ -23,7 +31,7 @@ export default function Challange() {
           <ul>
             {challenges.map((challenge) => (
               <li
-                key={challenge._id}
+                key={challenge.id} // Use `id` from Firestore document
                 className="mb-4 p-4 border-b border-gray-300 last:border-none"
               >
                 <div className="flex flex-col">
@@ -33,13 +41,13 @@ export default function Challange() {
                   <p className="text-gray-600">
                     <strong>Context:</strong> {challenge.context}
                   </p>
-                
-                <Link
-                   to={`/challenge/${challenge._id}`}
-                  className="px-6 text-sm py-3 w-1/6 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-                >
-                  Challange
-                </Link>
+
+                  <Link
+                    to={`/challenge/${challenge.id}`} // Use `id` from Firestore document
+                    className="px-6 text-sm py-3 w-1/6 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+                  >
+                    View Challenge
+                  </Link>
                 </div>
               </li>
             ))}
