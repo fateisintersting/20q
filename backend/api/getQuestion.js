@@ -1,4 +1,3 @@
-
 const getQuestion = require('../src/routes/getQuestion');
 
-module.exports = getQuestion;
+module.exports = (req, res) => getQuestion(req, res);

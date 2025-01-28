@@ -1,4 +1,3 @@
+const chatRouter = require('../src/routes/chat');
 
-const getchallenge = require('../src/routes/getChallange');
-
-module.exports = getchallenge;
+module.exports = (req, res) => chatRouter(req, res);
