@@ -1,5 +1,6 @@
 const express = require("express");
 const OpenAI = require("openai");
+require('dotenv').config();
 
 const chatRouter = express.Router();
 

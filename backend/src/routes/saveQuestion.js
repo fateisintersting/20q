@@ -1,6 +1,6 @@
-const express = require('express');
+const express =  require('express');
 const { collection, addDoc } = require('firebase/firestore');
-const db = require('../models/Firebase'); // Import the Firestore instance
+const db  =  require('./../models/Firebase'); // Import the Firestore instance
 
 const saveQuestion = express.Router();
 

@@ -18,7 +18,7 @@ export default function Question() {
     setIsButtonDisabled(true); // Disable button immediately after it's clicked
 
     axios
-      .post("https://20q-wxcj.vercel.app/api/question", data)
+      .post("https://backedn20q-e744f5d1be03.herokuapp.com/api/question", data)
       .then((response) => {
         setMessage(response.data.message);
         alert("Question created successfully!"); // Display success alert

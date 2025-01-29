@@ -15,7 +15,7 @@ export default function Solve() {
   useEffect(() => {
     // Fetch challenge details by ID
     axios
-      .get(`https://20q-wxcj.vercel.app/api/get-challenge/${id}`)
+      .get(`https://backedn20q-e744f5d1be03.herokuapp.com/api/get-challenge/${id}`)
       .then((response) => {
         setChallenge(response.data);
         setGuessWord(response.data.guessword); // Set the correct guess word
@@ -46,7 +46,7 @@ export default function Solve() {
     }
 
     try {
-      const response = await axios.post("https://20q-wxcj.vercel.app/api/chat", {
+      const response = await axios.post("https://backedn20q-e744f5d1be03.herokuapp.com/api/chat", {
         messages: updatedMessages,
       });
 
